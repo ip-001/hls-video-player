@@ -4,29 +4,13 @@ import { fixture, expect } from '@open-wc/testing';
 import '../hls-video-player.js';
 
 describe('HlsVideoPlayer', () => {
-  it('has a default header "Hey there" and counter 5', async () => {
-    const el = await fixture(html`<hls-video-player></hls-video-player>`);
+  it('can set name via attribute', async () => {
+    const el = await fixture(html` <hls-video-player
+      name="test name"
+      src="https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8"
+    >
+    </hls-video-player>`);
 
-    expect(el.header).to.equal('Hey there');
-    expect(el.counter).to.equal(5);
-  });
-
-  it('increases the counter on button click', async () => {
-    const el = await fixture(html`<hls-video-player></hls-video-player>`);
-    el.shadowRoot.querySelector('button').click();
-
-    expect(el.counter).to.equal(6);
-  });
-
-  it('can override the header via attribute', async () => {
-    const el = await fixture(html`<hls-video-player header="attribute header"></hls-video-player>`);
-
-    expect(el.header).to.equal('attribute header');
-  });
-
-  it('passes the a11y audit', async () => {
-    const el = await fixture(html`<hls-video-player></hls-video-player>`);
-
-    await expect(el).shadowDom.to.be.accessible();
+    expect(el.name).to.equal('test name');
   });
 });
