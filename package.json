@@ -20,6 +20,7 @@
     "test:watch": "web-test-runner --watch"
   },
   "dependencies": {
+    "hls.js": "^1.4.0",
     "lit": "^2.0.2"
   },
   "devDependencies": {
