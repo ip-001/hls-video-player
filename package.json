@@ -13,8 +13,8 @@
       "default": "./dist/src/index.js"
     },
     "./hls-video-player.js": {
-      "types": "./dist/src/text-editor.d.ts",
-      "default": "./dist/src/text-editor.js"
+      "types": "./dist/src/hls-video-player.d.ts",
+      "default": "./dist/src/hls-video-player.js"
     },
     "./HlsVideoPlayer.js": {
       "types": "./dist/src/HlsVideoPlayer.d.ts",

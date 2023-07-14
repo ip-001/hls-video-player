@@ -1,27 +1,40 @@
-import { html, css, LitElement } from 'lit';
+import { LitElement, html } from 'lit';
 import { property } from 'lit/decorators.js';
+import Hls from 'hls.js';
+
+import { HlsVideoPlayerStyles } from './hls-video-player.styles.js';
 
 export class HlsVideoPlayer extends LitElement {
-  static styles = css`
-    :host {
-      display: block;
-      padding: 25px;
-      color: var(--hls-video-player-text-color, #000);
+  @property({ type: String })
+  name!: string;
+
+  @property({ type: String })
+  src!: string;
+
+  firstUpdated() {
+    const player = this.shadowRoot!.querySelector('video');
+
+    if (Hls.isSupported()) {
+      const hls = new Hls();
+      hls.loadSource(this.src);
+      hls.attachMedia(player!);
+    } else if (player!.canPlayType('application/vnd.apple.mpegurl')) {
+      player!.src = this.src;
     }
-  `;
-
-  @property({ type: String }) header = 'Hey there';
-
-  @property({ type: Number }) counter = 5;
-
-  __increment() {
-    this.counter += 1;
   }
 
   render() {
     return html`
-      <h2>${this.header} Nr. ${this.counter}!</h2>
-      <button @click=${this.__increment}>increment</button>
+      <video controls controlsList="nodownload">
+        Your device does not support playing HTTP Live Streaming (HLS) videos.
+      </video>
+
+      <main>
+        <h6>${this.name}</h6>
+        <span>video</span>
+      </main>
     `;
   }
+
+  static styles = HlsVideoPlayerStyles;
 }
