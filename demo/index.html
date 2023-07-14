@@ -1,34 +1,29 @@
 <!doctype html>
 <html lang="en-GB">
-  <head>
-    <meta charset="utf-8">
-    <style>
-      body {
-        background: #fafafa;
-      }
+<head>
+  <meta charset="utf-8">
+  <style>
+    body {
+      background: #fafafa;
+    }
+  </style>
+</head>
+<body>
+  <div id="demo"></div>
 
-      #demo {
-        max-width: 80%;
-        margin: 0 auto;
-      }
-    </style>
-  </head>
-  <body>
-    <div id="demo"></div>
+  <script type="module">
+    import { html, render } from 'lit';
+    import '../dist/src/hls-video-player.js';
 
-    <script type="module">
-      import { html, render } from 'lit';
-      import '../hls-video-player.js';
-
-      render(
-        html`
-          <hls-video-player
-            name="Big Buck Bunny - Demo"
-            src="https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8">
-          </hls-video-player>
-        `,
-        document.querySelector('#demo')
-      );
-    </script>
-  </body>
+    const header = 'Hello owc World!';
+    render(
+      html`
+        <hls-video-player .header=${header}>
+          some light-dom
+        </hls-video-player>
+      `,
+      document.querySelector('#demo')
+    );
+  </script>
+</body>
 </html>
