@@ -1,7 +1,7 @@
 {
   "name": "@ip-001/hls-video-player",
   "description": "A web component for playing HTTP Live Streaming (HLS) videos following open-wc recommendations",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "author": "ip-001 <ip-001@thinkpad.local>",
   "license": "MIT",
   "type": "module",
